@@ -6,7 +6,7 @@
       target="_blank"
       type="primary"
     >
-      <h1 class="app-header-title">FRender 表单设计器</h1>
+      <h1 class="app-header-title">XLYK 表单设计器</h1>
     </el-link>
     <div class="app-header-right">
       <el-button
