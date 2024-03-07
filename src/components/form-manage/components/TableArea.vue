@@ -64,7 +64,7 @@
           >
           <el-button
             type="text"
-            :disabled="!!row.blnisinactive"
+            :disabled="!!row.blnisinactive || row.lngdataviewid == 8"
             class="del"
             @click="delPosition(row)"
             >删除</el-button

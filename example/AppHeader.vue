@@ -1,16 +1,18 @@
 <template>
   <header class="app-header">
-    <el-link
-      :underline="false"
-      href="https://github.com/dream2023/f-render"
-      target="_blank"
-      type="primary"
-    >
+    <el-link :underline="false" target="_blank" type="primary">
       <h1 class="app-header-title">XLYK 表单设计器</h1>
     </el-link>
     <el-form :model="form" inline size="mini" class="top-form">
       <el-form-item label="请选择表单" title="选择要加载的表单">
         <el-select v-model="form.lngdataviewid" filterable>
+          <template v-slot:prefix>
+            <i
+              class="el-icon-refresh-left reload"
+              :class="{ 'el-icon-loading': isReload }"
+              @click.stop="reloadEvent"
+            ></i>
+          </template>
           <el-option
             v-for="item in dataViews"
             :key="item.lngdataviewid"
@@ -62,6 +64,7 @@ export default {
     return {
       dataViews: [],
       drawer: false,
+      isReload: false,
       form: {
         lngdataviewid: ""
       },
@@ -91,7 +94,11 @@ export default {
     addEvent() {
       this.drawer = true;
     },
+    reloadEvent() {
+      this.getDataViews();
+    },
     getDataViews() {
+      this.isReload = true;
       fetch("http://127.0.0.1:9999/xlyk/xlykdesign/dataview/search")
         .then(response => response.json())
         .then(data => {
@@ -101,6 +108,11 @@ export default {
         .catch(error => {
           // 处理错误
           console.error("发生错误:", error);
+        })
+        .finally(() => {
+          setTimeout(() => {
+            this.isReload = false;
+          }, 1000);
         });
     }
   }
@@ -141,5 +153,10 @@ export default {
 }
 .drawer-custom .el-drawer__header {
   margin-bottom: 0;
+}
+.reload {
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1.4 !important;
 }
 </style>
