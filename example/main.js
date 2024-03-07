@@ -4,10 +4,11 @@ import FRender from "f-render";
 import ElementUI from "element-ui";
 import EleForm from "vue-ele-form";
 import EleDynamic from "vue-ele-form-dynamic";
+import EleFormTableEditor from "vue-ele-form-table-editor";
 import "element-ui/lib/theme-chalk/index.css";
 import "normalize.css";
 import axios from "axios";
-
+import Card from "../src/components/Card/index";
 axios.interceptors.response.use(response => {
   // 将响应结果返回
   return response.data;
@@ -38,7 +39,8 @@ Vue.use(EleForm, {
 });
 Vue.component("f-render", FRender);
 Vue.component("dynamic", EleDynamic);
-
+Vue.component("table-editor", EleFormTableEditor);
+Vue.component("card", Card);
 new Vue({
   render: h => h(App)
 }).$mount("#app");

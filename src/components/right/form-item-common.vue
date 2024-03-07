@@ -76,7 +76,6 @@ export default {
           this.formDesc = {};
           return;
         }
-
         // 当前组件信息
         this.formDesc = changeFormDescLabel({
           ...this.frender.formItemCommon.config,

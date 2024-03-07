@@ -1,12 +1,12 @@
 export default {
   config: {
     field: {
-      type: "input",
+      type: "select",
       label: "字段名",
-      tip: "字段名不可重复",
-      rules: {
-        type: "string"
-      }
+      tip: "字段名不可重复"
+      // rules: {
+      //   type: "string"
+      // }
     },
     label: {
       type: "input",

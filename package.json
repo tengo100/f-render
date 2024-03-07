@@ -24,6 +24,7 @@
     "serialize-javascript": "^4.0.0",
     "vue-ele-form-data-editor": "^0.1.6",
     "vue-ele-form-dynamic": "^0.4.3",
+    "vue-ele-form-table-editor": "^0.1.6",
     "vue-multipane": "^0.9.5",
     "vue-prism-editor": "^1.2.2",
     "vue2-perfect-scrollbar": "^1.5.0",

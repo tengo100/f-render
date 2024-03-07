@@ -18,7 +18,7 @@
       <multipane-resizer></multipane-resizer>
       <!-- 右侧 -->
       <slot name="right" :frender="this">
-        <f-render-right class="f-render-right" />
+        <f-render-right ref="frenderright" class="f-render-right" />
       </slot>
     </template>
   </multipane>
@@ -171,12 +171,11 @@ export default {
         }
 
         const { formDesc = {}, ...formPropsData } = cloneDeep(formConfig);
-
         this.formPropsData = Object.assign(this.formPropsData, formPropsData);
+
         this.formItemList = objectToArr(formDesc, "field").map(item =>
           Object.assign({ attrs: {} }, item)
         );
-
         // 当有数据时，选中第一个
         if (this.formItemList.length) {
           this.currentIndex = 0;
