@@ -973,7 +973,6 @@ export default {
     }
   },
   mounted() {
-    console.log("local");
     if (this.isMock && !window.Mock) {
       loadMockJs();
     }

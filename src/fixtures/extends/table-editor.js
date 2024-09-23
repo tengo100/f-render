@@ -1,6 +1,7 @@
 export default {
   type: "table-editor",
   label: "表格内容编辑组件",
+  sort: 101,
   config: {
     url: "https://github.com/dream2023/vue-ele-form-table-editor",
     attrs: {

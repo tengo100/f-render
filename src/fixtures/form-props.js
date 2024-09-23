@@ -161,6 +161,20 @@ export default {
       attrs: {
         types: ["object"]
       }
+    },
+    beforeValidate: {
+      label: "验证前事件",
+      type: "data-editor",
+      attrs: {
+        types: ["function"]
+      }
+    },
+    beforeRequest: {
+      label: "提交前事件",
+      type: "data-editor",
+      attrs: {
+        types: ["function"]
+      }
     }
   },
   data: {}
