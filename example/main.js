@@ -2,9 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import FRender from "f-render";
 import ElementUI from "element-ui";
-import EleForm from "vue-ele-form";
-import EleDynamic from "vue-ele-form-dynamic";
-import EleFormTableEditor from "vue-ele-form-table-editor";
+import EleForm from "../src/lib/vue-ele-form/index";
 import "element-ui/lib/theme-chalk/index.css";
 import "normalize.css";
 import axios from "axios";
@@ -14,6 +12,7 @@ axios.interceptors.response.use(response => {
   return response.data;
 });
 Vue.prototype.$axios = axios;
+Vue.prototype.$BaseUrl = "http://192.168.8.188:9999";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(EleForm, {
@@ -38,8 +37,6 @@ Vue.use(EleForm, {
   }
 });
 Vue.component("f-render", FRender);
-Vue.component("dynamic", EleDynamic);
-Vue.component("table-editor", EleFormTableEditor);
 Vue.component("card", Card);
 new Vue({
   render: h => h(App)

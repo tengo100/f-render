@@ -115,7 +115,7 @@ export default {
       }
       this.$axios
         .request({
-          url: `http://127.0.0.1:9999/xlyk/xlykdesign/dataview/page?page=${this.paging.page}&size=${this.paging.size}&strdataviewname=${this.formInline.strdataviewname}`,
+          url: `${this.$BaseUrl}/xlyk/xlykdesign/dataview/page?page=${this.paging.page}&size=${this.paging.size}&strdataviewname=${this.formInline.strdataviewname}`,
           method: "get"
         })
         .then(res => {
@@ -136,7 +136,8 @@ export default {
       this.$axios
         .request({
           url:
-            "http://127.0.0.1:9999/xlyk/xlykdesign/dataview/createtable?lngdataviewid=" +
+            this.$BaseUrl +
+            "/xlyk/xlykdesign/dataview/createtable?lngdataviewid=" +
             row.lngdataviewid,
           method: "get"
         })
@@ -161,7 +162,8 @@ export default {
           this.$axios
             .request({
               url:
-                "http://127.0.0.1:9999/xlyk/xlykdesign/dataview/del?lngdataviewid=" +
+                this.$BaseUrl +
+                "/xlyk/xlykdesign/dataview/del?lngdataviewid=" +
                 row.lngdataviewid,
               method: "get"
             })

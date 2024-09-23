@@ -53,7 +53,7 @@ export default {
       this.lngdataviewid = item.lngdataviewid;
       this.$axios
         .request({
-          url: `http://127.0.0.1:9999/xlyk/xlykdesign/dataview/findbyid?lngdataviewid=${item.lngdataviewid}`,
+          url: `${this.$BaseUrl}/xlyk/xlykdesign/dataview/findbyid?lngdataviewid=${item.lngdataviewid}`,
           method: "get"
         })
         .then(res => {
@@ -86,7 +86,7 @@ export default {
     },
     save(res) {
       const data = { lngdataviewid: this.lngdataviewid, strformjson: res };
-      fetch("http://127.0.0.1:9999/xlyk/xlykdesign/dataview/add", {
+      fetch(`${this.$BaseUrl}/xlyk/xlykdesign/dataview/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)

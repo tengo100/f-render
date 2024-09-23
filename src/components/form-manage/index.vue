@@ -36,7 +36,8 @@ export default {
       this.$axios
         .request({
           url:
-            "http://127.0.0.1:9999/xlyk/xlykdesign/dataview/findbyid?lngdataviewid=" +
+            this.$BaseUrl +
+            "/xlyk/xlykdesign/dataview/findbyid?lngdataviewid=" +
             row.lngdataviewid,
           method: "get"
         })

@@ -47,7 +47,7 @@ export default {
     handleRequest() {
       return this.$axios
         .request({
-          url: "http://127.0.0.1:9999/xlyk/xlykdesign/dataview/add",
+          url: this.$BaseUrl + "/xlyk/xlykdesign/dataview/add",
           method: "post",
           data: this.formData
         })
@@ -65,7 +65,7 @@ export default {
     getForm(lngdataviewid) {
       this.$axios
         .request({
-          url: `http://127.0.0.1:9999/xlyk/xlykdesign/dataview/findbyid?lngdataviewid=${lngdataviewid}`,
+          url: `${this.$BaseUrl}/xlyk/xlykdesign/dataview/findbyid?lngdataviewid=${lngdataviewid}`,
           method: "get"
         })
         .then(res => {

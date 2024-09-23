@@ -25,6 +25,9 @@
       <el-form-item label="">
         <el-button type="primary" @click="addEvent">表单管理</el-button>
       </el-form-item>
+      <el-form-item label="">
+        <el-button type="primary" @click="listEvent">测试列表</el-button>
+      </el-form-item>
     </el-form>
 
     <div class="app-header-right">
@@ -35,14 +38,14 @@
         style="margin-right: 20px"
         >切换视图</el-button
       >
-      <el-link
-        :href="item.url"
-        target="_blank"
-        type="primary"
-        v-for="item of links"
-        :key="item.title"
-        >{{ item.title }}</el-link
-      >
+      <!--      <el-link-->
+      <!--        :href="item.url"-->
+      <!--        target="_blank"-->
+      <!--        type="primary"-->
+      <!--        v-for="item of links"-->
+      <!--        :key="item.title"-->
+      <!--        >{{ item.title }}</el-link-->
+      <!--      >-->
     </div>
     <el-drawer
       class="drawer-custom"
@@ -50,21 +53,23 @@
       title="表单管理"
       size="70%"
     >
-      <FormManage ref="FormManage" />
+      <component :is="drawerComponent" :ref="drawerComponent"></component>
     </el-drawer>
   </header>
 </template>
 
 <script>
 import FormManage from "../src/components/form-manage/index";
+import FormList from "f-render/components/list";
 export default {
   name: "AppHeader",
-  components: { FormManage },
+  components: { FormManage, FormList },
   data() {
     return {
       dataViews: [],
       drawer: false,
       isReload: false,
+      drawerComponent: "FormManage",
       form: {
         lngdataviewid: ""
       },
@@ -92,6 +97,11 @@ export default {
       this.$emit("select", item);
     },
     addEvent() {
+      this.drawerComponent = "FormManage";
+      this.drawer = true;
+    },
+    listEvent() {
+      this.drawerComponent = "FormList";
       this.drawer = true;
     },
     reloadEvent() {
@@ -99,7 +109,7 @@ export default {
     },
     getDataViews() {
       this.isReload = true;
-      fetch("http://127.0.0.1:9999/xlyk/xlykdesign/dataview/search")
+      fetch(this.$BaseUrl + "/xlyk/xlykdesign/dataview/search")
         .then(response => response.json())
         .then(data => {
           // 处理返回的数据
