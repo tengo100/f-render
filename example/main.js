@@ -12,7 +12,7 @@ axios.interceptors.response.use(response => {
   return response.data;
 });
 Vue.prototype.$axios = axios;
-Vue.prototype.$BaseUrl = "http://192.168.8.188:9999";
+Vue.prototype.$BaseUrl = "http://localhost:9999";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(EleForm, {

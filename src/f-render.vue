@@ -53,7 +53,7 @@ import { Multipane, MultipaneResizer } from "vue-multipane";
 import _ from "lodash";
 const cloneDeep = require("clone");
 import serialize from "serialize-javascript";
-import { objectToArr, arrToObject, removeEmptyProps } from "./utils";
+import { objectToArr, arrToDesc, removeEmptyProps } from "./utils";
 
 // 默认配置
 import compsDefault from "./fixtures/comps";
@@ -186,7 +186,7 @@ export default {
     // 将表单项转为对象类型
     formItemList: {
       handler(list) {
-        this.formDesc = arrToObject(list, "field");
+        this.formDesc = arrToDesc(list, "field");
       },
       deep: true,
       immediate: true

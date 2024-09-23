@@ -34,7 +34,10 @@ export default {
   computed: {
     formDesc() {
       return changeFormDescLabel(
-        this.frender.currentCompConfig?.config?.attrs?.config || {}
+        {
+          ...this.frender.currentCompConfig?.config?.attrs?.config,
+          ...this.frender.currentCompConfig?.config?.attrs?.on
+        } || {}
       );
     },
     // 文档链接

@@ -29,6 +29,20 @@ export function arrToObject(arr, key) {
     return acc;
   }, {});
 }
+// 把attrs中的事件赋值到on上
+export function arrToDesc(arr, key) {
+  const formDesc = arrToObject(arr, key);
+  Object.keys(formDesc).forEach(prop => {
+    formDesc[prop].on = {};
+    Object.keys(formDesc[prop].attrs).forEach(p => {
+      // 需要捕获的事件key
+      if (["input", "change", "click", "blur", "focus"].includes(p)) {
+        formDesc[prop].on[p] = formDesc[prop].attrs[p];
+      }
+    });
+  });
+  return formDesc;
+}
 
 // 改变 formDesc 的 Label
 export function changeFormDescLabel(formDesc = {}) {

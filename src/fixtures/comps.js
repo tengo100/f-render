@@ -105,6 +105,22 @@ export default [
             label: "输入时是否触发表单的校验"
           }
         },
+        on: {
+          input: {
+            label: "输入事件",
+            type: "data-editor",
+            attrs: {
+              types: ["function"]
+            }
+          },
+          blur: {
+            label: "输入事件",
+            type: "data-editor",
+            attrs: {
+              types: ["function"]
+            }
+          }
+        },
         data: {}
       }
     }
