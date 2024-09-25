@@ -15,8 +15,10 @@
       :visible="visible"
       v-if="isShowContent"
       @update:visible="$emit('change', $event)"
-      :request-fn="handleRequest"
-      @request-success="handleRequestSuccess"
+      :request-fn="frender.formPropsData.requestFn || handleRequest"
+      @request-success="
+        frender.formPropsData.requestSuccess || handleRequestSuccess
+      "
     ></ele-form>
   </el-dialog>
 </template>
@@ -46,6 +48,7 @@ export default {
   },
   methods: {
     handleRequest(data) {
+      console.log(this.frender);
       // eslint-disable-next-line
       console.log(data);
       return Promise.resolve(data);
