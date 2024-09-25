@@ -175,6 +175,21 @@ export default {
       attrs: {
         types: ["function"]
       }
+    },
+    requestFn: {
+      label: "保存事件",
+      type: "data-editor",
+      attrs: {
+        types: ["function"],
+        showMore: true, // 显示扩展按钮
+        formDesc: {
+          // 配置弹窗内的表单
+          codemirror: {
+            type: "codemirror",
+            label: ""
+          }
+        }
+      }
     }
   },
   data: {}

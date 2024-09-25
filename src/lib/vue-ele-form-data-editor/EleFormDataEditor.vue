@@ -3,6 +3,9 @@
     class="vue-ele-form-data-editor"
     :class="{ 'is-error': isError, 'is-success': isSuccess }"
   >
+    <div v-if="attrs.showMore" class="head-tool-wp">
+      <el-tag @click="handleMore">扩展</el-tag>
+    </div>
     <el-input
       v-model="newValue"
       :class="desc.class"
@@ -22,6 +25,17 @@
       >保存改动</el-button
     >
     <div class="err-msg" v-if="isError">{{ errMsg }}</div>
+    <!--    扩展弹窗-->
+    <ele-form-dialog
+      v-model="dialogData"
+      :formDesc="attrs.formDesc || {}"
+      v-bind="attrs"
+      :dialogAttrs="dialogAttrs"
+      :visible.sync="dialogFormVisible"
+      class="more-dialog"
+      :request-fn="handleDialogRequest"
+      @request-success="handleDialogSuccess"
+    ></ele-form-dialog>
   </div>
 </template>
 <script>
@@ -40,8 +54,12 @@ export default {
       newValue: "",
       defaultAttrs: {
         rows: 6,
-        autoSave: true
-      }
+        autoSave: true,
+        title: "扩展功能",
+        modalAppendToBody: false
+      },
+      dialogData: { codemirror: "" },
+      dialogFormVisible: false
     };
   },
   watch: {
@@ -60,6 +78,16 @@ export default {
   computed: {
     types() {
       return this.toArray(this.attrs.types);
+    },
+    dialogAttrs() {
+      // dialog默认配置
+      return Object.assign(
+        {
+          "modal-append-to-body": false,
+          "close-on-click-modal": false
+        },
+        this.attrs.dialogAttrs
+      );
     }
   },
   methods: {
@@ -124,6 +152,19 @@ export default {
       } catch (err) {
         this.errMsg = err[this.field];
       }
+    },
+    handleMore() {
+      this.dialogFormVisible = true;
+      this.dialogData.codemirror = this.newValue;
+    },
+    handleDialogRequest(data) {
+      console.log(data);
+      return Promise.resolve();
+    },
+    handleDialogSuccess() {
+      this.$message.success("提交成功");
+      this.newValue = this.dialogData.codemirror;
+      this.dialogFormVisible = false;
     }
   }
 };
@@ -140,5 +181,16 @@ export default {
 .vue-ele-form-data-editor.is-success .el-textarea__inner {
   border-color: #67c23a;
   border-style: dashed;
+}
+/*扩展按钮*/
+.head-tool-wp {
+  margin-bottom: 10px;
+}
+.head-tool-wp .el-tag {
+  cursor: pointer;
+}
+/*弹窗的按钮居中*/
+.more-dialog .ele-form-btns{
+  text-align: center;
 }
 </style>

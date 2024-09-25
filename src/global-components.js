@@ -12,6 +12,7 @@ import "vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css";
 import EleFormDynamic from "./lib/vue-ele-form-dynamic";
 import EleFormDataEditor from "./lib/vue-ele-form-data-editor";
 import EleFormTableEditor from "./lib/vue-ele-form-table-editor";
+import EleFormCodemirror from "./lib/vue-ele-form-codemirror";
 
 // 拖拽
 import vueDraggable from "vuedraggable/src/vuedraggable";
@@ -27,3 +28,4 @@ Vue.component("PrismEditor", PrismEditor);
 Vue.component("vue-draggable", vueDraggable);
 Vue.component("data-editor", EleFormDataEditor);
 Vue.component("table-editor", EleFormTableEditor);
+Vue.component("codemirror", EleFormCodemirror);
