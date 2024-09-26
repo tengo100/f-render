@@ -159,11 +159,12 @@ export default {
     },
     handleDialogRequest(data) {
       console.log(data);
+      this.newValue = this.dialogData.codemirror;
+      this.handleChange()
       return Promise.resolve();
     },
     handleDialogSuccess() {
       this.$message.success("提交成功");
-      this.newValue = this.dialogData.codemirror;
       this.dialogFormVisible = false;
     }
   }
