@@ -157,10 +157,9 @@ export default {
       this.dialogFormVisible = true;
       this.dialogData.codemirror = this.newValue;
     },
-    handleDialogRequest(data) {
-      console.log(data);
+    handleDialogRequest() {
       this.newValue = this.dialogData.codemirror;
-      this.handleChange()
+      this.handleChange();
       return Promise.resolve();
     },
     handleDialogSuccess() {
@@ -191,7 +190,7 @@ export default {
   cursor: pointer;
 }
 /*弹窗的按钮居中*/
-.more-dialog .ele-form-btns{
+.more-dialog .ele-form-btns {
   text-align: center;
 }
 </style>

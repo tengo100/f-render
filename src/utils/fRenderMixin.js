@@ -57,15 +57,15 @@ export default {
       }
       this.isLoading = true;
       this.saveLoading = true;
-      const { key, value } = this.dialogConfig.primary;
-      data[key] = value;
-      if (this.dialogConfig.extra) {
-        data[this.dialogConfig.extra.key] = this.dialogConfig.extra.value;
-      }
-      const submitData = this.formatter(data);
-      this.submitFn(submitData)
+      // const { key, value } = this.dialogConfig.primary;
+      // data[key] = value;
+      // if (this.dialogConfig.extra) {
+      //   data[this.dialogConfig.extra.key] = this.dialogConfig.extra.value;
+      // }
+      // const submitData = this.formatter(data);
+      this.submitFn(data)
         .then(res => {
-          if (res.code === 20000) {
+          if (res.code === 1) {
             this.$message.success(res.message);
             this.$emit("refresh");
             this.visible = false;

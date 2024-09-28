@@ -192,9 +192,9 @@ export default {
         } else {
           res = await this.queryFn(this.searchForm);
         }
-        if (res.code === 20000) {
+        if (res.code === 1) {
           if (this.tableDesc.pagination) {
-            this.tableData = res.data.rows;
+            this.tableData = res.data.list;
             this.paging.total = res.data.total;
           } else {
             this.tableData = res.data;

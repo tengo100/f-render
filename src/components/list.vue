@@ -123,6 +123,8 @@ export default {
           if (res.code === 1) {
             const data = res.data[0];
             const strformjson = eval(`(${data.strformjson})`);
+            this.submitFn = strformjson.requestFn;
+            this.queryFn = strformjson.queryFn;
             this.formDesc = Object.assign(
               { ...strformjson.formDesc },
               {
@@ -156,17 +158,6 @@ export default {
             this.dialogDesc = Object.assign(
               { ...strformjson.formDesc },
               {
-                lngindextypeid: {
-                  default: 0,
-                  type: "input",
-                  label: "",
-                  layout: 33,
-                  disabled: true,
-                  isShowLabel: false,
-                  style: {
-                    display: "none"
-                  }
-                }
               }
             );
             this.isRendered = true;

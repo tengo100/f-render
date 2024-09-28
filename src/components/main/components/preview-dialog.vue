@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     handleRequest(data) {
-      console.log(this.frender);
       // eslint-disable-next-line
       console.log(data);
       return Promise.resolve(data);
