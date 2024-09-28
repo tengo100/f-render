@@ -155,11 +155,7 @@ export default {
                 sortable: true
               };
             });
-            this.dialogDesc = Object.assign(
-              { ...strformjson.formDesc },
-              {
-              }
-            );
+            this.dialogDesc = Object.assign({ ...strformjson.formDesc }, {});
             this.isRendered = true;
           }
         });

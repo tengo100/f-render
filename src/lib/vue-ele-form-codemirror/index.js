@@ -1,3 +1,3 @@
-import EleFormCodemirror from './EleFormCodemirror'
+import EleFormCodemirror from "./EleFormCodemirror";
 
-export default EleFormCodemirror
+export default EleFormCodemirror;
