@@ -6,6 +6,91 @@ export default {
     url: "https://github.com/dream2023/vue-ele-form-table-editor",
     attrs: {
       config: {
+        child: {
+          type: "select",
+          label: "选择子表",
+          options: [
+            {
+              text: "评论表",
+              value:
+                '{"formDesc": {\n' +
+                '    "lngcommentid": {\n' +
+                '      "type": "input",\n' +
+                '      "label": "主键 ID",\n' +
+                '      "on": {}\n' +
+                "    },\n" +
+                '    "person": {\n' +
+                '      "type": "input",\n' +
+                '      "label": "评论人",\n' +
+                '      "required": true,\n' +
+                '      "on": {}\n' +
+                "    },\n" +
+                '    "lngarticleid": {\n' +
+                '      "type": "select",\n' +
+                '      "label": "文章",\n' +
+                '      "isOptions": true,\n' +
+                '      "options": async ()=>{\n' +
+                "const list =await this.$axios.get(this.$BaseUrl+'/xlyk/xlykdesign/crud/all?tableName=artical')\n" +
+                "return list.data;\n" +
+                "},\n" +
+                '      "required": true,\n' +
+                '      "prop": {\n' +
+                '        "text": "strarticalname",\n' +
+                '        "value": "lngarticalid"\n' +
+                "      },\n" +
+                '      "on": {}\n' +
+                "    },\n" +
+                '    "note": {\n' +
+                '      "type": "textarea",\n' +
+                '      "label": "评论",\n' +
+                '      "required": true,\n' +
+                '      "on": {},\n' +
+                '      "attrs": {\n' +
+                '        "autosizeType": "switch",\n' +
+                '        "autosize": false\n' +
+                "      }\n" +
+                "    }\n" +
+                "  }}"
+            }
+          ],
+          on: {
+            change: function(val) {
+              console.log(this);
+              const MAPPING = {
+                input: "el-input",
+                select: "el-select",
+                textarea: "el-input"
+              };
+              const columns = [
+                {
+                  type: "index",
+                  width: 50
+                }
+              ];
+              const res = eval("(" + val + ")");
+              Object.keys(res.formDesc).forEach(prop => {
+                columns.push({
+                  prop: prop,
+                  label: res.formDesc[prop].label,
+                  content: {
+                    type: MAPPING[res.formDesc[prop].type],
+                    attrs: res.formDesc[prop].attrs,
+                    on: res.formDesc[prop].on,
+                    options: res.formDesc[prop].options,
+                    prop: res.formDesc[prop].prop
+                  }
+                });
+              });
+              const frender = window.__frender;
+              frender.formItemList[
+                frender.currentIndex
+              ].attrs.columns = columns;
+            }
+          },
+          attrs: {
+            filterable: true
+          }
+        },
         columns: {
           type: "data-editor",
           label: "table 列",

@@ -44,6 +44,9 @@ export default {
     attrLink() {
       return this.frender.currentCompConfig?.url;
     }
+  },
+  mounted() {
+    window.__frender = this.frender;
   }
 };
 </script>

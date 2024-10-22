@@ -3,7 +3,11 @@ export default {
     field: {
       type: "select",
       label: "字段名",
-      tip: "字段名不可重复"
+      tip: "字段名不可重复",
+      attrs: {
+        filterable: true,
+        allowCreate: true
+      }
       // rules: {
       //   type: "string"
       // }
