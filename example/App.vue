@@ -25,6 +25,7 @@ import AppHeader from "./AppHeader";
 // 默认配置
 import comps from "../src/fixtures/comps";
 import tableEditor from "../src/fixtures/extends/table-editor";
+import eleFormVxeTable from "../src/fixtures/extends/ele-form-vxe-table";
 import formItemCommonDefault from "../src/fixtures/form-item-common";
 export default {
   components: {
@@ -39,7 +40,7 @@ export default {
       formData: {},
       pure: false,
       formItemCommon: {},
-      comps: comps.concat(tableEditor)
+      comps: comps.concat([tableEditor, eleFormVxeTable])
     };
   },
   methods: {

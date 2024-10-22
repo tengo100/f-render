@@ -46,4 +46,8 @@ export default {
 .ele-form-codemirror {
   line-height: 1.3;
 }
+.heightAuto .CodeMirror {
+  overscroll-y: scroll !important;
+  height: calc(100vh - 150px) !important;
+}
 </style>

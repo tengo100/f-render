@@ -4,6 +4,8 @@ import FRender from "f-render";
 import ElementUI from "element-ui";
 import EleForm from "../src/lib/vue-ele-form/index";
 import "element-ui/lib/theme-chalk/index.css";
+import VXETable from "vxe-table";
+import "vxe-table/lib/style.css";
 import "normalize.css";
 import axios from "axios";
 import Card from "../src/components/Card/index";
@@ -15,6 +17,7 @@ Vue.prototype.$axios = axios;
 Vue.prototype.$BaseUrl = "http://localhost:9999";
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+Vue.use(VXETable);
 Vue.use(EleForm, {
   upload: {
     action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
