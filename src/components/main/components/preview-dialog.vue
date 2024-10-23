@@ -48,6 +48,10 @@ export default {
   },
   methods: {
     handleRequest(data) {
+      // 绑定实例为现在vue组件的this
+      // eslint-disable-next-line
+      const dynamicFunction = new Function(`return (${this.frender.formPropsData.requestFn}).apply(this)`);
+      dynamicFunction.call(this);
       // eslint-disable-next-line
       console.log(data);
       return Promise.resolve(data);

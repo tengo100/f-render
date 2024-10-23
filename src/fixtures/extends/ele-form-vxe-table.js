@@ -31,6 +31,7 @@ export default {
         gridOption: {
           type: "data-editor",
           label: "表格配置",
+          ref: "aabbcc",
           attrs: {
             types: ["object"],
             showMore: true,

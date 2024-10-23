@@ -1,5 +1,6 @@
 <template>
   <vxe-grid
+    ref="grid"
     v-bind="computedAttrs"
     :class="desc.class"
     :style="desc.style"
