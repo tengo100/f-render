@@ -34,12 +34,17 @@
 
 <script>
 import formMixin from "../vue-ele-form/mixins/formMixin";
+import { defaultGridOption } from "./default-grid-option";
 export default {
   name: "EleFormVxeTable",
   mixins: [formMixin],
   computed: {
     computedAttrs() {
-      return Object.assign(this.attrs, this.attrs.gridOption);
+      return Object.assign(
+        this.attrs,
+        defaultGridOption,
+        this.attrs.gridOption
+      );
     }
   },
   methods: {
@@ -53,7 +58,7 @@ export default {
       await this.$refs.grid.setActiveRow(newRow);
       this.$emit("addRow");
     },
-    delRow(row, rowIndex) {
+    delRow(row) {
       this.$refs.grid.remove(row);
       this.$emit("delRow", row);
     },
