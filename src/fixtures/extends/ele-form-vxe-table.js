@@ -1,3 +1,10 @@
+const crudColumn = {
+  width: 60,
+  slots: {
+    header: "crud_header",
+    default: "crud_default"
+  }
+};
 export default {
   type: "ele-form-vxe-table",
   label: "表格组件",
@@ -6,6 +13,23 @@ export default {
     url: "",
     attrs: {
       config: {
+        iscrud: {
+          type: "switch",
+          label: "是否增删改查按钮",
+          default: true,
+          span: 24,
+          on: {
+            change: val => {
+              const frender = window.__frender;
+              const index = frender.currentIndex;
+              if (val) {
+                frender.formItemList[index].attrs.columns.unshift(crudColumn);
+              } else {
+                frender.formItemList[index].attrs.columns.shift();
+              }
+            }
+          }
+        },
         columns: {
           type: "data-editor",
           label: "表格列",
@@ -49,7 +73,9 @@ export default {
           }
         }
       },
-      data: {}
+      data: {
+        columns: [crudColumn]
+      }
     },
     common: {
       config: {},
