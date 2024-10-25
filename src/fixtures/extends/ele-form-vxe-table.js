@@ -13,9 +13,9 @@ export default {
     url: "",
     attrs: {
       config: {
-        iscrud: {
+        isCrud: {
           type: "switch",
-          label: "是否增删改查按钮",
+          label: "是否显示增删按钮",
           default: true,
           span: 24,
           on: {
