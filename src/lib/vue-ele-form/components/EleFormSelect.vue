@@ -24,6 +24,7 @@
       :value="option.value"
       v-bind="option.attrs"
       v-for="option in options"
+      @click.native="handleClick(option)"
     ></el-option>
   </el-select>
 </template>
@@ -65,6 +66,11 @@ export default {
           this.EleForm.formDescData[this.field].isRestValByOptions = false;
           this.EleForm.changeOptions(options, this.field);
         });
+      }
+    },
+    handleClick(option) {
+      if (this.desc.on && this.desc.on.select) {
+        this.desc.on.select(option);
       }
     }
   },
