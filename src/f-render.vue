@@ -309,6 +309,10 @@ export default {
     };
 
     document.body.addEventListener("drop", this.ondrop);
+    // 定义是编辑器时才有window.__frender变量
+    if (!this.pure) {
+      window.__frender = this;
+    }
   },
   beforeDestroy() {
     document.body.removeEventListener("drop", this.ondrop);

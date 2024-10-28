@@ -5,6 +5,7 @@
     :class="desc.class"
     :style="desc.style"
     v-on="onEvents"
+    @menu-click="handleMenuClick"
   >
     <template #crud_header="{}">
       <span style="cursor:pointer;color:red;" title="清空" @click="resetRow">
@@ -43,6 +44,25 @@ export default {
       return Object.assign(
         this.attrs,
         defaultGridOption,
+        window.__frender // 只有编辑器时添加的配置
+          ? {
+              menuConfig: {
+                header: {
+                  options: [
+                    [
+                      {
+                        code: "deleteColumn",
+                        name: "删除列",
+                        prefixIcon: "vxe-icon-delete",
+                        visible: true,
+                        disabled: false
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          : {},
         this.attrs.gridOption
       );
     }
@@ -73,6 +93,13 @@ export default {
           this.$emit("resetRow");
         })
         .catch(() => {});
+    },
+    handleMenuClick({ menu, columnIndex }) {
+      if (menu.code === "deleteColumn" && window.__frender) {
+        const frender = window.__frender;
+        const index = window.__frender.currentIndex;
+        frender.formItemList[index].attrs.columns.splice(columnIndex, 1);
+      }
     }
   }
 };

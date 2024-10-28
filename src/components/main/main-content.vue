@@ -178,16 +178,16 @@ export default {
 }
 
 /* 遮挡区(遮挡住，不允许直接输入等操作) */
-.main-content .form-item::after {
-  content: " ";
-  display: block;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-  z-index: 2;
-}
+/*.main-content .form-item::after {*/
+/*  content: " ";*/
+/*  display: block;*/
+/*  left: 0;*/
+/*  top: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  position: absolute;*/
+/*  z-index: 2;*/
+/*}*/
 
 /* 删除按钮 */
 .main-content .form-item .form-item-delete-btn {
