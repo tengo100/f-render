@@ -94,11 +94,17 @@ export default {
         })
         .catch(() => {});
     },
-    handleMenuClick({ menu, columnIndex }) {
+    handleMenuClick({ menu, columnIndex, column }) {
       if (menu.code === "deleteColumn" && window.__frender) {
         const frender = window.__frender;
         const index = window.__frender.currentIndex;
         frender.formItemList[index].attrs.columns.splice(columnIndex, 1);
+        if (column.type === "seq") {
+          frender.formItemList[index].attrs.isSeq = false;
+        }
+        if (column.type === "crud") {
+          frender.formItemList[index].attrs.isCrud = false;
+        }
       }
     }
   }
