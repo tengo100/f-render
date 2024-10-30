@@ -23,20 +23,40 @@ export default {
           type: "select",
           label: "引入子表",
           prop: {
-            text: "strdataviewname",
-            value: "lngdataviewid"
+            text: "strbsformname",
+            value: "lngbstableid"
           },
           options: async () => {
             const res = await fetch(
-              "http://localhost:9999/xlyk/xlykdesign/dataview/search"
+              window.__frender.$BaseUrl + "/bsform/findAll",
+              {
+                method: "post",
+                headers: {
+                  "X-Token": window.__frender.$XToken,
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({})
+              }
             ).then(response => response.json());
             return res.data;
           },
           on: {
-            select: option => {
+            select: async option => {
+              const rs = await fetch(
+                window.__frender.$BaseUrl +
+                  "/bsform/findFormSetting/" +
+                  option.lngbsformid,
+                {
+                  method: "get",
+                  headers: {
+                    "X-Token": window.__frender.$XToken,
+                    "Content-Type": "application/json"
+                  }
+                }
+              ).then(response => response.json());
               const frender = window.__frender;
               const index = frender.currentIndex;
-              const res = eval("(" + option.strformjson + ")");
+              const res = rs.data?.strformjson || { formDesc: {} };
               const formDesc = res.formDesc;
               const columns = [];
               const filterColumns = frender.formItemList[
@@ -61,6 +81,38 @@ export default {
               ];
             }
           }
+        },
+        strbstablefieldname: {
+          type: "select",
+          label: "子表外键名称",
+          optionsLinkageFields: ["child"],
+          options: async data => {
+            window.__frender.currentCompConfig.config.attrs.config.strbstablefieldnamem.options =
+              window.__frender?.formItemCommon.config.field.options;
+            const rs = await fetch(
+              window.__frender.$BaseUrl + "/bstablefield/findAll",
+              {
+                method: "post",
+                headers: {
+                  "X-Token": window.__frender.$XToken,
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ lngbstableid: data.child })
+              }
+            ).then(response => response.json());
+            return rs.data.map(item => {
+              return {
+                text: item.strfieldcomments,
+                value: item.strfieldname,
+                ...item
+              };
+            });
+          }
+        },
+        strbstablefieldnamem: {
+          type: "select",
+          label: "父表主键名称",
+          options: []
         },
         isCrud: {
           type: "switch",
@@ -151,7 +203,9 @@ export default {
         }
       },
       data: {
-        columns: [crudColumn, seqColumn]
+        columns: [crudColumn, seqColumn],
+        strbstablefieldname: "",
+        strbstablefieldnamem: ""
       }
     },
     common: {

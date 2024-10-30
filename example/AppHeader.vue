@@ -15,9 +15,9 @@
           </template>
           <el-option
             v-for="item in dataViews"
-            :key="item.lngdataviewid"
-            :label="item.strdataviewname"
-            :value="item.lngdataviewid"
+            :key="item.lngbsformid"
+            :label="item.strbsformname"
+            :value="item.lngbsformid"
             @click.native="selectEvent(item)"
           ></el-option>
         </el-select>
@@ -109,7 +109,11 @@ export default {
     },
     getDataViews() {
       this.isReload = true;
-      fetch(this.$BaseUrl + "/xlyk/xlykdesign/dataview/search")
+      fetch(this.$BaseUrl + "/bsform/findAll", {
+        method: "post",
+        headers: { "X-Token": this.$XToken, "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      })
         .then(response => response.json())
         .then(data => {
           // 处理返回的数据
