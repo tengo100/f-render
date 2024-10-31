@@ -22,12 +22,12 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="">
-        <el-button type="primary" @click="addEvent">表单管理</el-button>
-      </el-form-item>
-      <el-form-item label="">
-        <el-button type="primary" @click="listEvent">测试列表</el-button>
-      </el-form-item>
+      <!--      <el-form-item label="">-->
+      <!--        <el-button type="primary" @click="addEvent">表单管理</el-button>-->
+      <!--      </el-form-item>-->
+      <!--      <el-form-item label="">-->
+      <!--        <el-button type="primary" @click="listEvent">测试列表</el-button>-->
+      <!--      </el-form-item>-->
     </el-form>
 
     <div class="app-header-right">
@@ -61,6 +61,7 @@
 <script>
 import FormManage from "../src/components/form-manage/index";
 import FormList from "f-render/components/list";
+import { locat } from "xe-utils";
 export default {
   name: "AppHeader",
   components: { FormManage, FormList },
@@ -111,13 +112,26 @@ export default {
       this.isReload = true;
       fetch(this.$BaseUrl + "/bsform/findAll", {
         method: "post",
-        headers: { "X-Token": this.$XToken, "Content-Type": "application/json" },
+        headers: {
+          "X-Token": this.$XToken,
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({})
       })
         .then(response => response.json())
         .then(data => {
           // 处理返回的数据
           this.dataViews = data.data;
+          const {searchQuery} = locat();
+          const { lngbsformid } = searchQuery;
+          if (lngbsformid) {
+            this.form.lngdataviewid = lngbsformid * 1;
+
+            const item = this.dataViews.find(
+              item => item.lngbsformid === lngbsformid*1
+            );
+            this.selectEvent(item);
+          }
         })
         .catch(error => {
           // 处理错误

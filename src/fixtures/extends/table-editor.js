@@ -55,7 +55,6 @@ export default {
           ],
           on: {
             change: function(val) {
-              console.log(this);
               const MAPPING = {
                 input: "el-input",
                 select: "el-select",

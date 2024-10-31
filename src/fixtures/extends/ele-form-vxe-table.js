@@ -62,19 +62,28 @@ export default {
               const filterColumns = frender.formItemList[
                 index
               ].attrs.columns.filter(col => ["seq", "crud"].includes(col.type));
+              const mapEleFormToVxe = {
+                input:"ElInput",
+                select: "ElSelect",
+                switch: "ElSwitch",
+                radio: "ElRadio",
+                checkbox: "ElCheckbox"
+              };
               Object.keys(formDesc).forEach(prop => {
                 columns.push({
                   field: prop,
                   title: formDesc[prop].label,
                   editRender: {
-                    name: formDesc[prop].type,
+                    name: mapEleFormToVxe[formDesc[prop].type],
                     attrs: formDesc[prop].attrs,
+                    props: formDesc[prop].attrs,
                     events: formDesc[prop].on,
                     options: formDesc[prop].options,
                     optionProps: formDesc[prop].prop
                   }
                 });
               });
+              console.log(columns)
               frender.formItemList[index].attrs.columns = [
                 ...filterColumns,
                 ...columns
