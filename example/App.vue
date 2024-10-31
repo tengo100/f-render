@@ -60,7 +60,7 @@ export default {
           method: "get"
         })
         .then(rs => {
-          this.formConfig = rs.data?.strformjson || {};
+          this.formConfig = (rs.data && rs.data.strformjson) || {};
           this.lngbstableid = item.lngbstableid;
           this.lngbsformid = item.lngbsformid;
           this.$axios

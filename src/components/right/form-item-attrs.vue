@@ -35,14 +35,26 @@ export default {
     formDesc() {
       return changeFormDescLabel(
         {
-          ...this.frender.currentCompConfig?.config?.attrs?.config,
-          ...this.frender.currentCompConfig?.config?.attrs?.on
+          ...(this.frender &&
+          this.frender.currentCompConfig &&
+          this.frender.currentCompConfig.config &&
+          this.frender.currentCompConfig.config.attrs
+            ? this.frender.currentCompConfig.config.attrs.config
+            : {}),
+          ...(this.frender &&
+          this.frender.currentCompConfig &&
+          this.frender.currentCompConfig.config &&
+          this.frender.currentCompConfig.config.attrs
+            ? this.frender.currentCompConfig.config.attrs.on
+            : {})
         } || {}
       );
     },
     // 文档链接
     attrLink() {
-      return this.frender.currentCompConfig?.url;
+      return (
+        this.frender.currentCompConfig && this.frender.currentCompConfig.url
+      );
     }
   },
   mounted() {}

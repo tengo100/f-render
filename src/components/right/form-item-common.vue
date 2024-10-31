@@ -60,7 +60,11 @@ export default {
     // 自定义的配置
     customConfig() {
       const currentCompConfig = this.frender.currentCompConfig;
-      return currentCompConfig?.config?.common?.config || {};
+      return currentCompConfig &&
+        currentCompConfig.config &&
+        currentCompConfig.config.common
+        ? currentCompConfig.config.common.config
+        : {};
     },
     // 字段出现的次数
     fieldCountObj() {

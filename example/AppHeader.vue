@@ -122,13 +122,13 @@ export default {
         .then(data => {
           // 处理返回的数据
           this.dataViews = data.data;
-          const {searchQuery} = locat();
+          const { searchQuery } = locat();
           const { lngbsformid } = searchQuery;
           if (lngbsformid) {
             this.form.lngdataviewid = lngbsformid * 1;
 
             const item = this.dataViews.find(
-              item => item.lngbsformid === lngbsformid*1
+              item => item.lngbsformid === lngbsformid * 1
             );
             this.selectEvent(item);
           }

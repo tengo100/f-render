@@ -56,14 +56,14 @@ export default {
               ).then(response => response.json());
               const frender = window.__frender;
               const index = frender.currentIndex;
-              const res = rs.data?.strformjson || { formDesc: {} };
+              const res = (rs.data && rs.data.strformjson) || { formDesc: {} };
               const formDesc = res.formDesc;
               const columns = [];
               const filterColumns = frender.formItemList[
                 index
               ].attrs.columns.filter(col => ["seq", "crud"].includes(col.type));
               const mapEleFormToVxe = {
-                input:"ElInput",
+                input: "ElInput",
                 select: "ElSelect",
                 switch: "ElSwitch",
                 radio: "ElRadio",
@@ -83,7 +83,7 @@ export default {
                   }
                 });
               });
-              console.log(columns)
+              console.log(columns);
               frender.formItemList[index].attrs.columns = [
                 ...filterColumns,
                 ...columns
@@ -97,7 +97,9 @@ export default {
           optionsLinkageFields: ["child"],
           options: async data => {
             window.__frender.currentCompConfig.config.attrs.config.strbstablefieldnamem.options =
-              window.__frender?.formItemCommon.config.field.options;
+              (window.__frender &&
+                window.__frender.formItemCommon.config.field.options) ||
+              [];
             const rs = await fetch(
               window.__frender.$BaseUrl + "/bstablefield/findAll",
               {

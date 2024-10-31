@@ -206,7 +206,10 @@ export default {
     },
     // 当前表单项的 type 值
     currentFormItemType() {
-      return this.formItemList[this.currentIndex]?.type;
+      return (
+        this.formItemList[this.currentIndex] &&
+        this.formItemList[this.currentIndex].type
+      );
     },
     // 当前表单项对应的组件的配置
     currentCompConfig() {
@@ -251,8 +254,11 @@ export default {
       return cloneDeep({
         type,
         ...this.formItemCommon.data,
-        ...(comp?.config?.common?.data || {}),
-        attrs: comp?.config?.attrs?.data || {}
+        ...(comp && comp.config && comp.config.common
+          ? comp.config.common.data
+          : {}),
+        attrs:
+          comp && comp.config && comp.config.attrs ? comp.config.attrs.data : {}
       });
     },
     // 通过类型获取组件
