@@ -174,7 +174,7 @@ export default {
 }
 /* 表单项激活时 */
 .main-content .form-item-active {
-  border: 1px dashed #409eff;
+  border: 1px dashed #00A99D;
 }
 
 /* 遮挡区(遮挡住，不允许直接输入等操作) */
@@ -198,6 +198,6 @@ export default {
   cursor: pointer;
   padding: 7px 15px;
   color: white;
-  background: #409eff;
+  background: #00A99D;
 }
 </style>
