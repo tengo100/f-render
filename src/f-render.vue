@@ -349,18 +349,21 @@ export default {
 .f-render-right {
   width: 315px;
 }
+.f-render-right .el-tabs__header {
+  padding-top: 0px;
+}
 
 /* 头部区域 */
 .f-render-header {
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   border-bottom: 1px solid #eeeeee;
 }
 
 /* 滚动区域 */
 .f-render-scrollarea {
   /* 减去头部的高度 */
-  height: calc(100% - 60px);
+  height: calc(100% - 50px);
 }
 
 /* 左右面板拖动的抓手 */

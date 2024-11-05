@@ -25,8 +25,8 @@
           @click="handleDoubleClick(item)"
           class="f-render-comp"
         >
-          <div class="f-render-comp-title">{{ item.type }}</div>
-          <div>{{ item.label }}</div>
+          <div class="f-render-comp-title">{{ item.label }}</div>
+          <div>{{ item.type }}</div>
         </li>
       </vue-draggable>
     </perfect-scrollbar>
@@ -100,7 +100,7 @@ export default {
   border-radius: 3px;
   padding: 6px 8px;
   box-sizing: border-box;
-  margin: 5px;
+  margin: 0 0 5px 10px;
   font-size: 12px;
 }
 

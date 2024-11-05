@@ -10,12 +10,12 @@
             @click="operationBtns[key].click"
             v-if="operationBtns[key]"
             type="text"
-            >{{ operationBtns[key].label }}</el-button
+            >{{ operationBtns[key].label }}<el-divider direction="vertical"></el-divider></el-button
           >
         </template>
       </div>
       <div v-if="frender.operations.includes('save')">
-        <el-button @click="$emit('save')" icon="el-icon-upload2" type="text"
+        <el-button @click="$emit('save')" icon="el-icon-upload2" type="primary" plain
           >保存数据</el-button
         >
       </div>
@@ -140,5 +140,14 @@ export default {
 /* 去除默认边框 */
 .f-render-code .prism-editor__textarea:focus {
   outline: none;
+}
+.f-render-header .el-divider--vertical{
+  display: inline-block;
+  width: 1px;
+  height: 1.3em;
+  margin: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  position: relative;
 }
 </style>

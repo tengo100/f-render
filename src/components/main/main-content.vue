@@ -144,6 +144,7 @@ export default {
 /* 中间区域 */
 .main-content {
   padding: 20px;
+  background: #F9F9FB;
 }
 
 /* 表单样式 */
@@ -199,5 +200,16 @@ export default {
   padding: 7px 15px;
   color: white;
   background: #00A99D;
+}
+.main-content .ele-form-btns{
+  display: flex;
+  justify-content: center;
+}
+.main-content .el-col-18 {
+  width: 100%;
+  background: #fff;
+}
+.main-content .ele-form-btns .el-form-item__content{
+  margin-left: 0px !important;
 }
 </style>

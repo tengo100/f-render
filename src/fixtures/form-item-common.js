@@ -61,7 +61,7 @@ export default {
             type: "codemirror",
             label: ""
           }
-        },
+        }
       },
       vif: data => data.isOptions,
       tip:
