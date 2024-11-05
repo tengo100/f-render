@@ -1,7 +1,7 @@
 <template>
   <div class="ele-form" :class="{ 'ele-form--inline': inline }" ref="wrapper">
     <el-row justify="center" type="flex">
-      <el-col :span="computedSpan">
+      <el-col :span="computedSpan" class="diy-bg">
         <el-form
           :label-position="computedLabelPosition"
           :label-width="computedLabelWidth"
@@ -1013,5 +1013,8 @@ export default {
 .ele-form-full-line.el-select,
 .ele-form-full-line.el-autocomplete {
   width: 100%;
+}
+.diy-bg {
+  background: #fff;
 }
 </style>
