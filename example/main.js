@@ -9,13 +9,16 @@ import "vxe-table/lib/style.css";
 import "normalize.css";
 import axios from "axios";
 import Card from "../src/components/Card/index";
+import XEUtils from "xe-utils";
+import XEUtilsExt from "td-vue-ui/packages/utils/src/xe-utils-ext";
+import { PullDownGrid } from "td-vue-ui";
+XEUtils.mixin(XEUtilsExt);
 axios.interceptors.response.use(response => {
   // 将响应结果返回
   return response.data;
 });
 Vue.prototype.$axios = axios;
-Vue.prototype.$BaseUrl =
-  location.protocol + "//" + location.host + "/xlyk-api/hrmanage/";
+Vue.prototype.$BaseUrl = "http://192.168.0.115:9527/xlyk-api/hrmanage/";
 Vue.prototype.$XToken = sessionStorage.getItem("X-Token");
 Vue.config.productionTip = false;
 import VXETablePluginElement from "vxe-table-plugin-element";
@@ -46,6 +49,8 @@ Vue.use(EleForm, {
 });
 Vue.component("f-render", FRender);
 Vue.component("card", Card);
+Vue.component("PullDownGrid", PullDownGrid);
+
 new Vue({
   render: h => h(App)
 }).$mount("#app");

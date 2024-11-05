@@ -341,11 +341,17 @@ export default [
         },
         data: {
           isOptions: true,
-          options: [
-            { text: "选项1", value: 1 },
-            { text: "选项2", value: 2 },
-            { text: "选项3", value: 3 }
-          ]
+          options: async data => {
+            const res = await fetch("/xlyk-api/hrmanage/bsform/findAll", {
+              method: "post",
+              headers: {
+                "X-Token": sessionStorage.getItem("X-Token"),
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({})
+            }).then(response => response.json());
+            return res.data;
+          }
         }
       }
     }

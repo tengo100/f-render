@@ -53,7 +53,15 @@ export default {
       label: "选项",
       attrs: {
         types: ["string", "array", "function", "promise", "asyncfunction"],
-        rows: 10
+        rows: 10,
+        showMore: true, // 显示扩展按钮
+        formDesc: {
+          // 配置弹窗内的表单
+          codemirror: {
+            type: "codemirror",
+            label: ""
+          }
+        },
       },
       vif: data => data.isOptions,
       tip:

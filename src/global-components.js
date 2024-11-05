@@ -14,6 +14,7 @@ import EleFormDataEditor from "./lib/vue-ele-form-data-editor";
 import EleFormTableEditor from "./lib/vue-ele-form-table-editor";
 import EleFormCodemirror from "./lib/vue-ele-form-codemirror";
 import EleFormVxeTable from "./lib/vxe-ele-form-vxe-table/EleFormVxeTable";
+import EleFormPullDownGrid from "./lib/vue-ele-form-pull-down-grid";
 // 拖拽
 import vueDraggable from "vuedraggable/src/vuedraggable";
 
@@ -30,3 +31,4 @@ Vue.component("data-editor", EleFormDataEditor);
 Vue.component("table-editor", EleFormTableEditor);
 Vue.component("codemirror", EleFormCodemirror);
 Vue.component("ele-form-vxe-table", EleFormVxeTable);
+Vue.component("ele-form-pull-down-grid", EleFormPullDownGrid);
