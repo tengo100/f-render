@@ -83,7 +83,6 @@ export default {
                   }
                 });
               });
-              console.log(columns);
               frender.formItemList[index].attrs.columns = [
                 ...filterColumns,
                 ...columns

@@ -726,7 +726,6 @@ export default {
         } else if (options instanceof Function) {
           // 当options为Promise时: 等待Promise结束, 并获取值
           if (this.formDescData[field]._isLoadingOptions) return;
-          console.log(this.shouldRequest(field),field,'_____________')
           if (!this.shouldRequest(field)) return;
 
           const res = this.getFunctionAttr(options, field);
