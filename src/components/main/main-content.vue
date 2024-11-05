@@ -6,6 +6,7 @@
       :formDesc="frender.formDesc"
       :order="Object.keys(frender.formDesc)"
       v-bind="frender.formBindProps"
+      class="bg-white"
     >
       <template v-slot:form-content="{ props, formDesc, formErrorObj }">
         <vue-draggable
@@ -145,6 +146,7 @@ export default {
 .main-content {
   padding: 20px;
   background: #F9F9FB;
+  margin: 0 5px;
 }
 
 /* 表单样式 */
@@ -211,5 +213,8 @@ export default {
 }
 .main-content .ele-form-btns .el-form-item__content{
   margin-left: 0px !important;
+}
+.bg-white{
+  background: #fff;
 }
 </style>
