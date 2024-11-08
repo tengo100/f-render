@@ -86,6 +86,7 @@ export default {
         {
           "modal-append-to-body": false,
           "close-on-click-modal": false,
+          "append-to-body":true,
           fullscreen: true,
           "custom-class": "heightAuto"
         },
