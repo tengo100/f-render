@@ -36,7 +36,7 @@ export function arrToDesc(arr, key) {
     formDesc[prop].on = {};
     Object.keys(formDesc[prop].attrs).forEach(p => {
       // 需要捕获的事件key
-      if (["input", "change", "click", "blur", "focus"].includes(p)) {
+      if (["input", "change", "click", "blur", "focus", "select"].includes(p)) {
         formDesc[prop].on[p] = formDesc[prop].attrs[p];
       }
     });

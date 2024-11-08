@@ -12,6 +12,7 @@
       v-bind="frender.formBindProps"
       :formDesc="frender.formDesc"
       v-model="formData"
+      :formData="formData"
       :visible="visible"
       v-if="isShowContent"
       @update:visible="$emit('change', $event)"

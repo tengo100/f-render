@@ -114,7 +114,7 @@ export default [
             }
           },
           blur: {
-            label: "输入事件",
+            label: "失去焦点事件",
             type: "data-editor",
             attrs: {
               types: ["function"]
@@ -325,6 +325,23 @@ export default [
             type: "switch",
             label:
               "对于不可搜索的 Select，是否在输入框获得焦点后自动弹出选项菜单"
+          }
+        },
+        on: {
+          select: {
+            type: "data-editor",
+            label: "选中整行触发事件",
+            attrs: {
+              types: ["function"],
+              showMore: true, // 显示扩展按钮
+              formDesc: {
+                // 配置弹窗内的表单
+                codemirror: {
+                  type: "codemirror",
+                  label: ""
+                }
+              }
+            }
           }
         },
         data: {}

@@ -70,7 +70,7 @@ export default {
     },
     handleClick(option) {
       if (this.desc.on && this.desc.on.select) {
-        this.desc.on.select(option);
+        this.desc.on.select(option, this.formData);
       }
     }
   },

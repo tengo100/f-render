@@ -54,6 +54,7 @@ export default {
       newValue: "",
       defaultAttrs: {
         rows: 6,
+        span: 24,
         autoSave: true,
         title: "扩展功能",
         modalAppendToBody: false
@@ -84,7 +85,9 @@ export default {
       return Object.assign(
         {
           "modal-append-to-body": false,
-          "close-on-click-modal": false
+          "close-on-click-modal": false,
+          fullscreen: true,
+          "custom-class": "heightAuto"
         },
         this.attrs.dialogAttrs
       );
